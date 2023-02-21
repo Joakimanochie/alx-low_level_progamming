@@ -1,1 +1,1 @@
-c scripts on function and nested loops
+c scripts about functions and nested loops
