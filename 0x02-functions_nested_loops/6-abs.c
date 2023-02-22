@@ -1,18 +1,14 @@
 #include "main.h"
 
 /**
- * _abs - computes the absoute value of an interger
+ * _abs - prints absolute value of input
+ * @k: integer to be converted to absolute value
  *
- * Return: absolute value
+ * Return: the absolute value of function
  */
-int _abs(int 1)
+int _abs(int k)
 {
-	if (i >= 0)
-	{
-		return (i);
-	}
-	else
-	{
-		return (i * -1);
-	}
+	if (k < 0)
+		k *= -1;
+	return (k);
 }
