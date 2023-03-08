@@ -1,44 +1,58 @@
 #include "main.h"
+int try_again(int n, int i);
 
 /**
- * _strlen_recursion - returns the length of a string.
- * @s: string
- * Return: the length of a string.
+ * is_prime_number - checks if an input number is a prime number or not
+ * @n: number to be checked
+ *
+ * Return: 1(if n is prime number), 0(otherwise)
  */
-int _strlen_recursion(char *s)
+int is_prime_number(int n)
 {
-	if (*s == '\0')
-		return (0);
+	int b = 2, d;
+
+	if (n <= 1)
+		d = 0;
 	else
-		return (1 + _strlen_recursion(s + 1));
-}
-
-/**
- * comparator - compares each character of the string.
- * @s: string
- * @n1: smallest iterator.
- * @n2: biggest iterator.
- * Return: .
- */
-int comparator(char *s, int n1, int n2)
-{
-	if (*(s + n1) == *(s + n2))
 	{
-		if (n1 == n2 || n1 == n2 + 1)
-			return (1);
-		return (0 + comparator(s, n1 + 1, n2 - 1));
+		if ((n % b == 0) && (b != n))
+			d = 0;
+		else if ((n % b == 0) && (b == n))
+			d = 1;
+		else
+		{
+			b = try_again(n, b);
+			d = b;
+		}
 	}
-	return (0);
+	return (d);
 }
 
 /**
- * is_palindrome - detects if a string is a palindrome.
- * @s: string.
- * Return: 1 if s is a palindrome, 0 if not.
+ * try_again - checks if an input number is a prime number or not
+ * @n: number to be checked
+ * @i: divisor
+ *
+ * Return: 1(if n is prime number), 0(otherwise)
  */
-int is_palindrome(char *s)
+int try_again(int n, int i)
 {
-	if (*s == '\0')
-		return (1);
-	return (comparator(s, 0, _strlen_recursion(s) - 1));
+	int j;
+
+	i++;
+	if (n <= 1)
+		j = 0;
+	else
+	{
+		if ((n % i == 0) && (i != n))
+			j = 0;
+		else if ((n % i == 0) && (i == n))
+			j = 1;
+		else
+		{
+			i = try_again(n, i);
+			j = i;
+		}
+	}
+	return (j);
 }
