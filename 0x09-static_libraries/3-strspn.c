@@ -1,46 +1,28 @@
 #include "main.h"
-
 /**
- * _strspn - returns the number of bytes of the initial segment of s that contains only bytes of accept
- * @s: string to be checked
- * @accept: string to be checked for
- *
- * Return: nymber of bytes
+ * _strspn - Entry point
+ * @s: input
+ * @accept: input
+ * Return: Always 0 (Success)
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int a, b;
-	char *d;
+	unsigned int n = 0;
+	int r;
 
-	d = s;
-	while (*accept !='\0')
+	while (*s)
 	{
-		s = d;
-		while ((*s != ' ') || (*s != ','))
+		for (r = 0; accept[r]; r++)
 		{
-			if (*s == *accept)
+			if (*s == accept[r])
 			{
+				n++;
 				break;
 			}
-			else
-				continue;
-			s++;
+			else if (accept[r + 1] == '\0')
+				return (n);
 		}
-		if (*s != *accept)
-		{
-			a  = 0;
-			break;
-		}
-		accept++;
-			
+		s++;
 	}
-	if (*accept == '\0')
-	{
-		b = 0;
-		s = d;
-		while ((*s != ' ') || (*s != ','))
-			b++;
-		a = b;
-	}
-	return (a);
+	return (n);
 }
